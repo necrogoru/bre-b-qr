@@ -1,0 +1,35 @@
+{
+  "name": "bre-b-qr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": "22.14.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "tailwindcss": "^4.1.13",
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "postcss-extend": "^1.0.5",
+    "postcss-import": "^16.1.1",
+    "postcss-mixins": "^12.1.2",
+    "postcss-preset-env": "^10.4.0",
+    "postcss-simple-vars": "^7.0.1",
+    "vite": "^7.1.7"
+  }
+}

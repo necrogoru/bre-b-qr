@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+@font-face {
+  font-family: Ubuntu, sans-serif;
+  font-optical-sizing: auto;
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+@font-face {
+  font-family: Ubuntu, sans-serif;
+  font-optical-sizing: auto;
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+@font-face {
+  font-family: Ubuntu, sans-serif;
+  font-optical-sizing: auto;
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  @apply text-gray-900;
+
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  @apply text-22 font-semibold;
+}
+
+h2 {
+  @apply text-20 font-semibold;
+}
+
+h3 {
+  @apply text-18 font-semibold;
+}
+
+h4 {
+  @apply text-16 font-semibold;
+}
+
+h5 {
+  @apply text-14 font-semibold;
+}
