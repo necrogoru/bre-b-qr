@@ -1,0 +1,55 @@
+/* Base button styles */
+.desy-button {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+/* Filled variant - Purple (default) */
+.desy-button--filled.desy-button--purple {
+  @apply bg-purple-600 text-white hover:bg-purple-700 active:bg-purple-800;
+  @apply focus:ring-purple-500;
+}
+
+/* Filled variant - Error (Red) */
+.desy-button--filled.desy-button--error {
+  @apply bg-red-600 text-white hover:bg-red-700 active:bg-red-800;
+  @apply focus:ring-red-500;
+}
+
+/* Outline variant - Purple */
+.desy-button--outline.desy-button--purple {
+  @apply bg-transparent text-purple-600 border-2 border-purple-600;
+  @apply hover:bg-purple-50 active:bg-purple-100;
+  @apply focus:ring-purple-500;
+}
+
+/* Outline variant - Error (Red) */
+.desy-button--outline.desy-button--error {
+  @apply bg-transparent text-red-600 border-2 border-red-600;
+  @apply hover:bg-red-50 active:bg-red-100;
+  @apply focus:ring-red-500;
+}
+
+/* Ghost variant - Purple */
+.desy-button--ghost.desy-button--purple {
+  @apply bg-transparent text-purple-600;
+  @apply hover:bg-purple-50 active:bg-purple-100;
+  @apply focus:ring-purple-500;
+}
+
+/* Ghost variant - Error (Red) */
+.desy-button--ghost.desy-button--error {
+  @apply bg-transparent text-red-600;
+  @apply hover:bg-red-50 active:bg-red-100;
+  @apply focus:ring-red-500;
+}
+
+/* Disabled state */
+.desy-button--disabled {
+  @apply opacity-50 cursor-not-allowed pointer-events-none;
+}
+
+/* Loading indicator */
+.desy-button__loader {
+  @apply inline-block animate-spin;
+}
