@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --text-10: 1.0rem;
+  --text-12: 1.2rem;
+  --text-14: 1.4rem;
+  --text-16: 1.6rem;
+  --text-18: 1.8rem;
+  --text-20: 2.0rem;
+  --text-24: 2.4rem;
+  --text-30: 3.0rem;
+  --text-36: 3.6rem;
+  --text-48: 4.8rem;
+  --text-60: 6.0rem;
+}

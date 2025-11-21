@@ -1,7 +1,12 @@
-@import "tailwindcss";
 @import "./typography.css";
+@import "./tailwindcss.css";
 
-a {
+body {
+  @apply bg-slate-900;
+}
+
+a,
+button {
   * {
     pointer-events: none;
   }
