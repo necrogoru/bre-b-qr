@@ -1,7 +1,7 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import './_index.css'
-import type { Props } from './types'
 import { computed } from 'vue'
+import type { Props } from './types'
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'filled',
