@@ -62,9 +62,7 @@ export default {
       :for="id"
       tabindex="0">
       <span>
-        <Icon
-          icon="ic:check"
-          size="16" />
+        <Icon icon="ic:check" />
       </span>
 
       <input

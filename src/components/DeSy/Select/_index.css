@@ -1,73 +1,13 @@
-@reference "tailwindcss";
+@import "@/components/DeSy/Input/mixin.css";
 
-.desy-select-container {
-  position: relative;
-  width: 100%;
-}
+.desy-select {
+  @mixin desy-input-base .desy-select;
 
-/* The trigger button that looks like an input */
-.desy-select-trigger {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  padding-right: 16px; /* Space for arrow */
-}
+  &__label {
+    @mixin desy-input-label;
+  }
 
-/* Custom dropdown arrow */
-.desy-select-trigger::after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid var(--text-placeholder);
-  border-bottom: 2px solid var(--text-placeholder);
-  transform: rotate(45deg) translateY(-2px);
-  transition: transform 0.3s ease;
-}
-
-/* State when dropdown is open */
-.desy-select-container.is-open .desy-select-trigger {
-  border-color: var(--neon-purple);
-  box-shadow: var(--shadow-glow-focus);
-}
-
-.desy-select-container.is-open .desy-select-trigger::after {
-  transform: rotate(-135deg) translateY(0px);
-}
-
-/* The Dropdown Menu List */
-.desy-select-options-list {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  width: 100%;
-  background-color: var(--bg-dropdown);
-  border: 2px solid var(--primary-purple);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-glow-focus);
-  overflow: hidden;
-  z-index: 10;
-  /* Hidden by default in a real app, shown here for demo */
-  display: flex;
-  flex-direction: column;
-  padding: 8px;
-}
-
-.desy-select-option {
-  padding: 12px 16px;
-  border-radius: var(--border-radius-md);
-  cursor: pointer;
-  transition: background 0.2s ease;
-  color: var(--text-placeholder);
-}
-
-.desy-select-option:hover {
-  background-color: rgba(124, 58, 237, 0.2);
-  color: var(--text-white);
-}
-
-/* The selected state in the list */
-.desy-select-option.is-selected {
-  background-color: var(--primary-purple);
-  color: var(--text-white);
+  &__error {
+    @mixin desy-input-error;
+  }
 }

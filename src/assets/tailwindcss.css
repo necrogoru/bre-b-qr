@@ -70,9 +70,7 @@
   --spacing-*: initial;
   --spacing: 0.1rem;
 
-  /* Subtle glow for focused inputs */
-  --shadow-glow-focus: 0 0 0 2px var(--bg-main), 0 0 20px rgba(168, 85, 247, 0.5), inset 0 0 10px rgba(124, 58, 237, 0.2);
-  /* Intense glow for hovered buttons */
+  --shadow-glow-focus: 0 0 0 2px var(--color-accent-500), 0 0 20px rgba(168, 85, 247, 0.5), inset 0 0 10px rgba(124, 58, 237, 0.2);
   --shadow-glow-intense: 0 0 30px rgba(168, 85, 247, 0.8), 0 4px 10px rgba(0,0,0,0.3);
   /* Subtle ring for checkbox focus */
   --shadow-focus-ring: 0 0 0 4px rgba(124, 58, 237, 0.3);

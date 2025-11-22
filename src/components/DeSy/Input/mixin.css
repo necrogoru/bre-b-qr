@@ -1,40 +1,49 @@
 @define-mixin desy-input-base {
   width: 100%;
+  color: var(--color-structure-50);
   background-color: var(--color-neutral-700);
-  border: 2px solid var(--border-color-subtle);
+  border: 2px solid var(--color-neutral-500);
   border-radius: var(--border-radius-lg);
-  padding: 16px 20px;
-  font-size: 1rem;
-  color: var(--text-white);
+  padding: 12px 16px;
   outline: none;
   transition: all 0.3s ease-in-out;
+  border-radius: var(--radius-3xl);
 
-  &::placeholder {
-    color: var(--text-placeholder);
+  &:focus-within {
+    border: 2px solid var(--color-accent-300);
+    box-shadow: var(--shadow-glow-focus);
   }
 
-  &:focus,
-  &.is-focused { /* .is-focused added for demonstration purposes */
-    border-color: var(--neon-purple);
-    box-shadow: var(--shadow-glow-focus);
+  &::placeholder {
+    color: var(--color-neutral-300);
+  }
+
+  input, select {
+    color: var(--color-structure-50);
+    width: 100%;
+    outline: none;
+    background-color: transparent !important;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0px 1000px var(--color-neutral-700) inset !important;
+      -webkit-text-fill-color: var(--color-structure-50) !important;
+    }
+    appearance: none;
   }
 }
 
 @define-mixin desy-input-label {
   display: block;
+  width: 100%;
   font-size: var(--text-14);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 @define-mixin desy-input-error {
   border-color: var(--color-error-500);
-
-  &:focus,
-  &.is-focused {
-    box-shadow: 0 0 0 2px var(--bg-main), 0 0 20px rgba(239, 68, 68, 0.5), inset 0 0 10px rgba(239, 68, 68, 0.2);
-  }
 }
 

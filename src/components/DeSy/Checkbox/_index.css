@@ -1,72 +1,58 @@
-.desy-checkbox-wrapper {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  margin-bottom: 16px;
-}
+@import "@/components/DeSy/Input/mixin.css";
 
-/* Hide native input visually but keep it accessible */
-.desy-checkbox-input-hidden {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
+$self: .desy-checkbox;
 
-/* The custom styled box */
-.desy-checkbox-custom-box {
-  height: 24px;
-  width: 24px;
-  background-color: transparent;
-  border: 2px solid var(--primary-purple);
-  border-radius: 6px;
-  margin-right: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
+$(self) {
+  @mixin desy-input-base .desy-checkbox;
 
-/* Label text styling */
-.desy-checkbox-label-text {
-  font-size: 1rem;
-  color: var(--text-white);
-}
+  label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-/* --- Checkbox States --- */
+    span:first-child {
+      border: 2px solid var(--color-neutral-100);
+      width: 24px;
+      height: 24px;
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-neutral-100);
 
-/* Hover effect on the wrapper */
-.desy-checkbox-wrapper:hover .desy-checkbox-custom-box {
-  box-shadow: var(--shadow-focus-ring);
-}
+      svg {
+        flex: none;
+        transition: all 0.1s ease-in-out;
+      }
+    }
 
-/* Checked State: Background fills with purple */
-.desy-checkbox-input-hidden:checked ~ .desy-checkbox-custom-box {
-  background-color: var(--primary-purple);
-  border-color: var(--primary-purple);
-}
+    input {
+      display: none;
+    }
 
-/* Checked State: The Checkmark Icon */
-/* Using a CSS trick for the checkmark, ideally use an SVG */
-.desy-checkbox-input-hidden:checked ~ .desy-checkbox-custom-box::after {
-  content: '';
-  display: block;
-  width: 6px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg) translateY(-2px);
-}
+  }
 
-/* Focus State (accessibility ring) */
-.desy-checkbox-input-hidden:focus ~ .desy-checkbox-custom-box {
-    box-shadow: var(--shadow-focus-ring), var(--shadow-glow-focus);
-}
+  &--checked {
+    label {
+      span:first-child {
+        color: var(--color-structure-50);
+        border: 2px solid var(--color-structure-50);
 
-/* Focus + Checked State (The bottom glowing example in image) */
-.desy-checkbox-wrapper.is-focused-glow .desy-checkbox-custom-box {
-  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.5), 0 0 25px rgba(168, 85, 247, 0.8);
+        svg {
+          font-size: 24px;
+          transform: rotate(5deg);
+        }
+      }
+    }
+  }
+
+  &__label {
+    @mixin desy-input-label;
+
+    margin-bottom: 0;
+  }
+
+  &__error {
+    @mixin desy-input-error;
+  }
 }

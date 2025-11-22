@@ -1,10 +1,9 @@
-/* @import "./mixin.css"; */
+@import "./mixin.css";
 
 $self: .desy-input;
 
 $(self) {
-  background: red;
-  /* @mixin desy-input-base;
+  @mixin desy-input-base $self;
 
   &__label {
     @mixin desy-input-label;
@@ -12,5 +11,5 @@ $(self) {
 
   &__error {
     @mixin desy-input-error;
-  } */
+  }
 }

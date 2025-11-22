@@ -43,7 +43,7 @@ export default {
     </p>
 
     <form
-      class="mt-16"
+      class="mt-16 flex flex-col gap-8"
       @submit.prevent="generateQR">
       <DeSySelect
         id="key-type"
@@ -54,8 +54,8 @@ export default {
       <div class="p-2 mt-4 w-120" />
 
       <DeSyInput
-        id="code"
         v-if="keyType === 'code'"
+        id="code"
         v-model="code"
         label="Código"
         prefix="@"
@@ -64,11 +64,14 @@ export default {
       <DeSyPhoneInput
         v-if="keyType === 'phone'"
         id="phone"
+        label="Número de teléfono"
         v-model="phone" />
 
       <DeSyInput
-        id="email"
         v-if="keyType === 'email'"
+        id="email"
+        label="Correo electrónico"
+        placeholder="correo@ejemplo.com"
         type="email" />
 
       <DeSyInput
