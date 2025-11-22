@@ -9,11 +9,6 @@ export default defineConfig({
     vue(),
     tailwindcss()
   ],
-  css: {
-    postcss: {
-      config: './postcss.config.js'
-    },
-  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')

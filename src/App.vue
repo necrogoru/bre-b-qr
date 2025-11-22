@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import './assets/main.css';
 import { ref } from 'vue'
 import DeSyButton from '@/components/DeSy/Button/index.vue'
 import DeSySelect from '@/components/DeSy/Select/index.vue'
