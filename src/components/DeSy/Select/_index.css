@@ -1,107 +1,73 @@
 @reference "tailwindcss";
 
-.desy-select {
-  @apply relative w-full;
-
-  &__label {
-    @apply block mb-2 font-medium text-gray-700;
-    font-size: var(--text-14);
-  }
-
-  &__wrapper {
-    @apply relative;
-  }
-
-  &__native {
-    @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-lg cursor-pointer transition-all duration-200 appearance-none;
-    font-size: var(--text-14);
-    min-height: 44px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239CA3AF' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    padding-right: 3rem;
-
-    &:hover:not(:disabled) {
-      @apply border-gray-400;
-    }
-
-    &:focus {
-      @apply border-blue-500 ring-2 ring-blue-200 outline-none;
-    }
-
-    &:disabled {
-      @apply bg-gray-100 cursor-not-allowed opacity-60;
-    }
-
-    &[multiple] {
-      background-image: none;
-      padding-right: 1rem;
-      min-height: 120px;
-    }
-
-    option {
-      @apply py-2;
-
-      &:disabled {
-        @apply text-gray-400;
-      }
-
-      &:checked {
-        @apply bg-blue-50 text-blue-600;
-      }
-    }
-  }
-
-  &__clear {
-    @apply absolute right-10 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors z-10;
-    font-size: var(--text-20);
-    line-height: 1;
-    padding: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  &__error {
-    @apply block mt-2 text-red-600;
-    font-size: var(--text-12);
-  }
-
-  &--error &__native {
-    @apply border-red-500;
-
-    &:hover {
-      @apply border-red-600;
-    }
-
-    &:focus {
-      @apply ring-red-200;
-    }
-  }
+.desy-select-container {
+  position: relative;
+  width: 100%;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .desy-select {
-    &__label {
-      @apply text-gray-300;
-    }
+/* The trigger button that looks like an input */
+.desy-select-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding-right: 16px; /* Space for arrow */
+}
 
-    &__native {
-      @apply bg-gray-800 border-gray-600 text-white;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239CA3AF' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+/* Custom dropdown arrow */
+.desy-select-trigger::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--text-placeholder);
+  border-bottom: 2px solid var(--text-placeholder);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.3s ease;
+}
 
-      &:hover:not(:disabled) {
-        @apply border-gray-500;
-      }
+/* State when dropdown is open */
+.desy-select-container.is-open .desy-select-trigger {
+  border-color: var(--neon-purple);
+  box-shadow: var(--shadow-glow-focus);
+}
 
-      &:disabled {
-        @apply bg-gray-900;
-      }
+.desy-select-container.is-open .desy-select-trigger::after {
+  transform: rotate(-135deg) translateY(0px);
+}
 
-      option:checked {
-        @apply bg-blue-900 text-blue-300;
-      }
-    }
-  }
+/* The Dropdown Menu List */
+.desy-select-options-list {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-dropdown);
+  border: 2px solid var(--primary-purple);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-glow-focus);
+  overflow: hidden;
+  z-index: 10;
+  /* Hidden by default in a real app, shown here for demo */
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.desy-select-option {
+  padding: 12px 16px;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: var(--text-placeholder);
+}
+
+.desy-select-option:hover {
+  background-color: rgba(124, 58, 237, 0.2);
+  color: var(--text-white);
+}
+
+/* The selected state in the list */
+.desy-select-option.is-selected {
+  background-color: var(--primary-purple);
+  color: var(--text-white);
 }

@@ -1,6 +1,6 @@
-.desy-input-base {
+@define-mixin desy-input-base {
   width: 100%;
-  background-color: var(--bg-component);
+  background-color: var(--color-neutral-700);
   border: 2px solid var(--border-color-subtle);
   border-radius: var(--border-radius-lg);
   padding: 16px 20px;
@@ -8,30 +8,33 @@
   color: var(--text-white);
   outline: none;
   transition: all 0.3s ease-in-out;
+
+  &::placeholder {
+    color: var(--text-placeholder);
+  }
+
+  &:focus,
+  &.is-focused { /* .is-focused added for demonstration purposes */
+    border-color: var(--neon-purple);
+    box-shadow: var(--shadow-glow-focus);
+  }
 }
 
-.desy-input-base::placeholder {
-  color: var(--text-placeholder);
-}
-
-/* Focus State (The glowing effect) */
-.desy-input-base:focus,
-.desy-input-base.is-focused { /* .is-focused added for demonstration purposes */
-  border-color: var(--neon-purple);
-  box-shadow: var(--shadow-glow-focus);
-}
-
-
-.field-label {
+@define-mixin desy-input-label {
   display: block;
-  font-size: 0.75rem;
+  font-size: var(--text-14);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 12px;
 }
 
-.required-mark {
-  color: var(--neon-pink);
-  margin-left: 4px;
+@define-mixin desy-input-error {
+  border-color: var(--color-error-500);
+
+  &:focus,
+  &.is-focused {
+    box-shadow: 0 0 0 2px var(--bg-main), 0 0 20px rgba(239, 68, 68, 0.5), inset 0 0 10px rgba(239, 68, 68, 0.2);
+  }
 }
+

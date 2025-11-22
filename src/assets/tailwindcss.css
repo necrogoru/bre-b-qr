@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --text-*: initial;
   --text-10: 1.0rem;
   --text-12: 1.2rem;
   --text-14: 1.4rem;
@@ -69,20 +70,7 @@
 
   /* --- Spacing --- */
   --spacing-*: initial;
-  --spacing: 2px;
-
-  --text-*: initial;
-  --text-10: 1.0rem;
-  --text-12: 1.2rem;
-  --text-14: 1.4rem;
-  --text-16: 1.6rem;
-  --text-18: 1.8rem;
-  --text-20: 2.0rem;
-  --text-24: 2.4rem;
-  --text-30: 3.0rem;
-  --text-36: 3.6rem;
-  --text-48: 4.8rem;
-  --text-60: 6.0rem;
+  --spacing: 0.1rem;
 
   /* Subtle glow for focused inputs */
   --shadow-glow-focus: 0 0 0 2px var(--bg-main), 0 0 20px rgba(168, 85, 247, 0.5), inset 0 0 10px rgba(124, 58, 237, 0.2);

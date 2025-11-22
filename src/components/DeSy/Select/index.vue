@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import './_index.css'
 import { ref, computed } from 'vue'
 import type { Props } from './types'
 
@@ -8,20 +9,19 @@ const props = withDefaults(defineProps<Props>(), {
   searchable: false,
   clearable: false,
   multiple: false,
-  className: ''
 })
 
 const emit = defineEmits<{
-  'update:value': [value: string | number | (string | number)[]]
+  'update:modelValue': [value: string | number | (string | number)[]]
   change: [value: string | number | (string | number)[]]
 }>()
 
 const selectRef = ref<HTMLSelectElement | null>(null)
 const selectedValues = ref<(string | number)[]>(
-  props.multiple && props.value
-    ? Array.isArray(props.value)
-      ? props.value
-      : [props.value]
+  props.multiple && props.modelValue
+    ? Array.isArray(props.modelValue)
+      ? props.modelValue
+      : [props.modelValue]
     : []
 )
 
@@ -32,8 +32,8 @@ const displayValue = computed(() => {
       .filter(Boolean)
       .join(', ')
   }
-  if (props.value !== undefined) {
-    return props.options.find(opt => opt.value === props.value)?.label || ''
+  if (props.modelValue !== undefined) {
+    return props.options.find(opt => opt.value === props.modelValue)?.label || ''
   }
   return ''
 })
@@ -47,30 +47,14 @@ const handleChange = (event: Event) => {
       return isNaN(Number(value)) ? value : Number(value)
     })
     selectedValues.value = selected
-    emit('update:value', selected)
+
+    emit('update:modelValue', selected)
     emit('change', selected)
   } else {
     const value = target.value
     const parsedValue = isNaN(Number(value)) ? value : Number(value)
-    emit('update:value', parsedValue)
+    emit('update:modelValue', parsedValue)
     emit('change', parsedValue)
-  }
-}
-
-const clearSelection = () => {
-  if (props.multiple) {
-    selectedValues.value = []
-    emit('update:value', [])
-    emit('change', [])
-    if (selectRef.value) {
-      selectRef.value.selectedIndex = -1
-    }
-  } else {
-    emit('update:value', '')
-    emit('change', '')
-    if (selectRef.value) {
-      selectRef.value.value = ''
-    }
   }
 }
 
@@ -78,7 +62,7 @@ const isSelected = (value: string | number) => {
   if (props.multiple) {
     return selectedValues.value.includes(value)
   }
-  return props.value === value
+  return props.modelValue === value
 }
 </script>
 
@@ -89,42 +73,48 @@ export default {
 </script>
 
 <template>
-  <div :class="['desy-select', className, { 'desy-select--disabled': disabled, 'desy-select--error': error }]">
-    <label v-if="label" class="desy-select__label">{{ label }}</label>
+  <div
+    class="desy-select"
+    :class="{
+      'desy-select--disabled': disabled,
+      'desy-select--error': error
+    }">
+    <label
+      v-if="label"
+      :for="id"
+      class="desy-select__label">
+      {{ label }}
+    </label>
 
     <div class="desy-select__wrapper">
       <select
-        ref="selectRef"
-        :class="['desy-select__native']"
+        :id
         :disabled="disabled"
         :multiple="multiple"
-        :value="multiple ? undefined : value"
-        @change="handleChange"
-      >
-        <option v-if="!multiple && placeholder" value="" disabled selected>
+        :value="multiple ? undefined : modelValue"
+        @change="handleChange">
+        <option
+          v-if="!multiple && placeholder"
+          value=""
+          disabled selected>
           {{ placeholder }}
         </option>
+
         <option
           v-for="option in options"
           :key="option.value"
           :value="option.value"
           :disabled="option.disabled"
-          :selected="isSelected(option.value)"
-        >
+          :selected="isSelected(option.value)">
           {{ option.label }}
         </option>
       </select>
-
-      <button
-        v-if="clearable && displayValue"
-        type="button"
-        class="desy-select__clear"
-        @click="clearSelection"
-      >
-        ×
-      </button>
     </div>
 
-    <span v-if="error" class="desy-select__error">{{ error }}</span>
+    <span
+      v-if="error"
+      class="desy-select__error">
+      {{ error }}
+    </span>
   </div>
 </template>

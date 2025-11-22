@@ -6,7 +6,7 @@ export interface Props {
   readonly?: boolean
   required?: boolean
   label?: string
-  id?: string
+  id: string
   error?: string
   helperText?: string
   size?: 'small' | 'medium' | 'large'

@@ -1,147 +1,16 @@
-@reference "tailwindcss";
+/* @import "./mixin.css"; */
 
-.desy-input-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
+$self: .desy-input;
 
-  .desy-input-label {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--desy-text-primary, #1f2937);
-    margin-bottom: 0.25rem;
+$(self) {
+  background: red;
+  /* @mixin desy-input-base;
 
-    .desy-input-required {
-      color: var(--desy-error, #ef4444);
-      margin-left: 0.25rem;
-    }
+  &__label {
+    @mixin desy-input-label;
   }
 
-  .desy-input-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-
-    .desy-input-prefix,
-    .desy-input-suffix {
-      display: flex;
-      align-items: center;
-      color: var(--desy-text-secondary, #6b7280);
-      font-size: 0.875rem;
-    }
-
-    .desy-input-prefix {
-      margin-right: 0.5rem;
-    }
-
-    .desy-input-suffix {
-      margin-left: 0.5rem;
-    }
-  }
-
-  .desy-input {
-    width: 100%;
-    font-family: inherit;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--desy-text-primary, #1f2937);
-    background-color: var(--desy-bg-white, #ffffff);
-    border-radius: 0.375rem;
-    transition: all 0.2s ease-in-out;
-    outline: none;
-
-    /* Size variants */
-    &--small {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.875rem;
-    }
-
-    &--medium {
-      padding: 0.625rem 1rem;
-      font-size: 1rem;
-    }
-
-    &--large {
-      padding: 0.75rem 1.25rem;
-      font-size: 1.125rem;
-    }
-
-    /* Style variants - Outlined */
-    &--outlined {
-      border: 1px solid var(--desy-border, #d1d5db);
-
-      &:hover:not(:disabled) {
-        border-color: var(--desy-border-hover, #9ca3af);
-      }
-
-      &:focus {
-        border-color: var(--desy-primary, #3b82f6);
-        box-shadow: 0 0 0 3px var(--desy-primary-light, rgba(59, 130, 246, 0.1));
-      }
-    }
-
-    /* Style variants - Filled */
-    &--filled {
-      border: none;
-      background-color: var(--desy-bg-gray, #f3f4f6);
-      border-bottom: 2px solid var(--desy-border, #d1d5db);
-      border-radius: 0.375rem 0.375rem 0 0;
-
-      &:hover:not(:disabled) {
-        background-color: var(--desy-bg-gray-hover, #e5e7eb);
-      }
-
-      &:focus {
-        background-color: var(--desy-bg-gray-hover, #e5e7eb);
-        border-bottom-color: var(--desy-primary, #3b82f6);
-      }
-    }
-
-    /* Style variants - Standard */
-    &--standard {
-      border: none;
-      border-bottom: 1px solid var(--desy-border, #d1d5db);
-      border-radius: 0;
-      padding-left: 0;
-      padding-right: 0;
-
-      &:focus {
-        border-bottom-color: var(--desy-primary, #3b82f6);
-      }
-    }
-
-    /* State - Disabled */
-    &--disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      background-color: var(--desy-bg-disabled, #f9fafb);
-    }
-
-    /* State - Readonly */
-    &--readonly {
-      background-color: var(--desy-bg-gray, #f3f4f6);
-      cursor: default;
-    }
-
-    /* State - Error */
-    &--error {
-      border-color: var(--desy-error, #ef4444);
-
-      &:focus {
-        border-color: var(--desy-error, #ef4444);
-        box-shadow: 0 0 0 3px var(--desy-error-light, rgba(239, 68, 68, 0.1));
-      }
-    }
-  }
-
-  .desy-input-error-message {
-    font-size: 0.875rem;
-    color: var(--desy-error, #ef4444);
-  }
-
-  .desy-input-helper-text {
-    font-size: 0.875rem;
-    color: var(--desy-text-secondary, #6b7280);
-  }
+  &__error {
+    @mixin desy-input-error;
+  } */
 }

@@ -35,6 +35,7 @@ export default {
 
 <template>
   <button
+    class="desy-button"
     :class="buttonClasses"
     :type="type"
     :disabled="disabled || loading"

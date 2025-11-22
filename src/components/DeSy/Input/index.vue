@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import './_index.css'
 import { computed } from 'vue'
 import type { Props, Emits } from './types'
-import './_index.css'
 
 const props = withDefaults(defineProps<Props>(), {
   type: 'text',
@@ -14,16 +14,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<Emits>()
 
-const inputClasses = computed(() => [
-  'desy-input',
-  `desy-input--${props.size}`,
-  `desy-input--${props.variant}`,
-  {
-    'desy-input--disabled': props.disabled,
-    'desy-input--error': props.error,
-    'desy-input--readonly': props.readonly
-  }
-])
+const inputClasses = computed(() => ({
+  'desy-input--disabled': props.disabled,
+  'desy-input--error': props.error,
+  'desy-input--readonly': props.readonly
+}))
 
 const handleInput = (event: Event) => {
   const target = event.target as HTMLInputElement
@@ -45,19 +40,28 @@ const handleBlur = (event: FocusEvent) => {
 </script>
 
 <template>
-  <div class="desy-input-wrapper">
-    <label v-if="label" :for="id" class="desy-input-label">
+  <div class="desy-input">
+    <label
+      v-if="label"
+      :for="id"
+      class="desy-input__label">
       {{ label }}
-      <span v-if="required" class="desy-input-required">*</span>
+      <span
+        v-if="required"
+        class="desy-input--required">
+        *
+      </span>
     </label>
 
-    <div class="desy-input-container">
-      <span v-if="prefix" class="desy-input-prefix">
+    <div class="desy-input__container">
+      <span
+        v-if="prefix"
+        class="desy-input__prefix">
         {{ prefix }}
       </span>
 
       <input
-        :id="id"
+        :id
         :type="type"
         :value="modelValue"
         :placeholder="placeholder"
@@ -71,12 +75,23 @@ const handleBlur = (event: FocusEvent) => {
         @blur="handleBlur"
       />
 
-      <span v-if="suffix" class="desy-input-suffix">
+      <span
+        v-if="suffix"
+        class="desy-input__suffix">
         {{ suffix }}
       </span>
     </div>
 
-    <span v-if="error" class="desy-input-error-message">{{ error }}</span>
-    <span v-else-if="helperText" class="desy-input-helper-text">{{ helperText }}</span>
+    <span
+      v-if="error"
+      class="desy-input__error-message">
+      {{ error }}
+    </span>
+
+    <span
+      v-else-if="helperText"
+      class="desy-input__helper-text">
+      {{ helperText }}
+    </span>
   </div>
 </template>

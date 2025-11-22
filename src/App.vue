@@ -34,21 +34,28 @@ export default {
 </script>
 
 <template>
-  <div class="p-12">
-    <h1 class="text-40">QR BRE-B</h1>
+  <div class="p-20">
+    <h1>
+      QR BRE-B
+    </h1>
 
-    <p class="text-40 mt-4">
+    <p class="mt-12">
       Crea un QR para tu llave BRE-B
     </p>
 
     <form
-      class="mt-8"
+      class="mt-16"
       @submit.prevent="generateQR">
+      <pre>KeyType: {{ keyType }}</pre>
       <DeSySelect
+        id="key-type"
         v-model="keyType"
         :options />
 
+      <div class="p-2 mt-4 w-120" />
+
       <DeSyInput
+        id="code"
         v-if="keyType === 'code'"
         v-model="code"
         label="Código"
@@ -61,15 +68,14 @@ export default {
         v-model="phone" />
 
       <DeSyInput
+        id="email"
         v-if="keyType === 'email'"
         type="email" />
 
       <DeSyInput
+        id="cc"
         v-if="keyType === 'cc'"
-        type="number" />
-
-      <DeSyInput
-        v-if="keyType === 'code'"
+        label="Número de identificación"
         type="number" />
 
       <DeSyCheckbox
