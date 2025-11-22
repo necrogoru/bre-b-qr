@@ -1,0 +1,37 @@
+.desy-input-base {
+  width: 100%;
+  background-color: var(--bg-component);
+  border: 2px solid var(--border-color-subtle);
+  border-radius: var(--border-radius-lg);
+  padding: 16px 20px;
+  font-size: 1rem;
+  color: var(--text-white);
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.desy-input-base::placeholder {
+  color: var(--text-placeholder);
+}
+
+/* Focus State (The glowing effect) */
+.desy-input-base:focus,
+.desy-input-base.is-focused { /* .is-focused added for demonstration purposes */
+  border-color: var(--neon-purple);
+  box-shadow: var(--shadow-glow-focus);
+}
+
+
+.field-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.required-mark {
+  color: var(--neon-pink);
+  margin-left: 4px;
+}
