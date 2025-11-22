@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      intl-tel-input:
+        specifier: ^25.12.5
+        version: 25.12.5
       tailwindcss:
         specifier: ^4.1.13
         version: 4.1.13
@@ -15,6 +18,9 @@ importers:
         specifier: ^3.5.22
         version: 3.5.22(typescript@5.9.3)
     devDependencies:
+      '@iconify/vue':
+        specifier: ^5.0.0
+        version: 5.0.0(vue@3.5.22(typescript@5.9.3))
       '@tailwindcss/postcss':
         specifier: ^4.1.13
         version: 4.1.13
@@ -227,6 +233,14 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+
+  '@iconify/vue@5.0.0':
+    resolution: {integrity: sha512-C+KuEWIF5nSBrobFJhT//JS87OZ++QDORB6f2q2Wm6fl2mueSTpFBeBsveK0KW9hWiZ4mNiPjsh6Zs4jjdROSg==}
+    peerDependencies:
+      vue: '>=3'
 
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
@@ -614,6 +628,9 @@ packages:
     resolution: {integrity: sha512-DyYHfIYwAJmjAjSSPKANxI8bFY9YtFrgkAfinBojQ8YJTOuOuav64tMUJv584SES4xl74PmuaevIyaLESHdTAA==}
     engines: {node: '>=0.10.0'}
 
+  intl-tel-input@25.12.5:
+    resolution: {integrity: sha512-zat95u/9sM0/xbAzbwEjk98lFhG26CSJ1f8BSoATnF5Pxw5/aiX3JJCQfOp+f44EZFsECF24nuKY/JlTXIwnUw==}
+
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
@@ -968,6 +985,13 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.10':
     optional: true
+
+  '@iconify/types@2.0.0': {}
+
+  '@iconify/vue@5.0.0(vue@3.5.22(typescript@5.9.3))':
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.5.22(typescript@5.9.3)
 
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
@@ -1329,6 +1353,8 @@ snapshots:
       ansi-regex: 2.1.1
 
   has-flag@1.0.0: {}
+
+  intl-tel-input@25.12.5: {}
 
   jiti@2.6.1: {}
 
