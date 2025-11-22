@@ -45,10 +45,10 @@ export default {
     <form
       class="mt-16"
       @submit.prevent="generateQR">
-      <pre>KeyType: {{ keyType }}</pre>
       <DeSySelect
         id="key-type"
         v-model="keyType"
+        label="Tipo de llave"
         :options />
 
       <div class="p-2 mt-4 w-120" />
@@ -74,6 +74,7 @@ export default {
       <DeSyInput
         id="cc"
         v-if="keyType === 'cc'"
+        placeholder="1234567890"
         label="Número de identificación"
         type="number" />
 
