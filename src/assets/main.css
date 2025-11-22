@@ -2,7 +2,7 @@
 @import "./tailwindcss.css";
 
 body {
-  @apply bg-slate-900;
+  @apply bg-neutral-900;
 }
 
 a,

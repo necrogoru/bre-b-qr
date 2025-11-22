@@ -12,4 +12,82 @@
   --text-36: 3.6rem;
   --text-48: 4.8rem;
   --text-60: 6.0rem;
+
+  /* --- Color Palette --- */
+  --color-*: initial;
+  --color-neutral-900: #09002E;
+  --color-neutral-700: #19113D;
+  --color-neutral-500: #29224C;
+  --color-neutral-300: #39335A;
+  --color-neutral-100: #494469;
+  --color-neutral-50: #514D70;
+
+  /* each color is 5% lighter than the previous light blue gray color */
+  --color-structure-900: #DFEFF6;
+  --color-structure-700: #E5F2F8;
+  --color-structure-500: #EBF6FA;
+  --color-structure-300: #F2F9FC;
+  --color-structure-100: #F8FCFE;
+  --color-structure-50: #FCFEFE;
+
+  --color-accent-900: #3E1D77;
+  --color-accent-700: #5D2CB2;
+  --color-accent-500: #7C3AED;
+  --color-accent-300: #8F54F6;
+  --color-accent-100: #A36FFD;
+  --color-accent-50: #AE7EFF;
+
+  --color-error-900: #7F1D1D;
+  --color-error-700: #B91C1C;
+  --color-error-500: #EF4444;
+  --color-error-300: #F87171;
+  --color-error-100: #FCA5A5;
+  --color-error-50: #FECACA;
+
+  --color-success-900: #14532D;
+  --color-success-700: #15803D;
+  --color-success-500: #22C55E;
+  --color-success-300: #4ADE80;
+  --color-success-100: #86EFAC;
+  --color-success-50: #BBF7D0;
+
+  --color-warning-900: #78350F;
+  --color-warning-700: #B45309;
+  --color-warning-500: #F59E0B;
+  --color-warning-300: #FBBF24;
+  --color-warning-100: #FCD34D;
+  --color-warning-50: #FEF3C7;
+
+  --color-info-900: #1E40AF;
+  --color-info-700: #2563EB;
+  --color-info-500: #3B82F6;
+  --color-info-300: #60A5FA;
+  --color-info-100: #93C5FD;
+  --color-info-50: #BFDBFE;
+
+  --color-transparent: transparent;
+
+  /* --- Spacing --- */
+  --spacing-*: initial;
+  --spacing: 2px;
+
+  --text-*: initial;
+  --text-10: 1.0rem;
+  --text-12: 1.2rem;
+  --text-14: 1.4rem;
+  --text-16: 1.6rem;
+  --text-18: 1.8rem;
+  --text-20: 2.0rem;
+  --text-24: 2.4rem;
+  --text-30: 3.0rem;
+  --text-36: 3.6rem;
+  --text-48: 4.8rem;
+  --text-60: 6.0rem;
+
+  /* Subtle glow for focused inputs */
+  --shadow-glow-focus: 0 0 0 2px var(--bg-main), 0 0 20px rgba(168, 85, 247, 0.5), inset 0 0 10px rgba(124, 58, 237, 0.2);
+  /* Intense glow for hovered buttons */
+  --shadow-glow-intense: 0 0 30px rgba(168, 85, 247, 0.8), 0 4px 10px rgba(0,0,0,0.3);
+  /* Subtle ring for checkbox focus */
+  --shadow-focus-ring: 0 0 0 4px rgba(124, 58, 237, 0.3);
 }
