@@ -98,6 +98,12 @@ export default {
       :for="id"
       class="desy-select__label">
       {{ label }}
+
+      <span
+        v-if="required"
+        class="desy-select__required">
+        *
+      </span>
     </label>
 
     <fieldset>

@@ -51,9 +51,10 @@ const handleBlur = (event: FocusEvent) => {
       :for="id"
       class="desy-input__label">
       {{ label }}
+
       <span
         v-if="required"
-        class="desy-input--required">
+        class="desy-input__required">
         *
       </span>
     </label>

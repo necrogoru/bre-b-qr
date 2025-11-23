@@ -1,7 +1,9 @@
 @import "@/components/DeSy/Input/mixin.css";
 
-.desy-select {
-  @mixin desy-input-base .desy-select;
+$self: .desy-select;
+
+$(self) {
+  @mixin desy-input-base $(self);
 
   &__label {
     @mixin desy-input-label;

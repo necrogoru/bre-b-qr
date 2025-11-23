@@ -14,6 +14,7 @@ export interface Props {
   multiple?: boolean
   onChange?: (value: string | number) => void
   options: Option[]
+  required?: boolean
   placeholder?: string
   searchable?: boolean
 }

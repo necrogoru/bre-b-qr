@@ -1,8 +1,10 @@
 @import "intl-tel-input/build/css/intlTelInput.css";
 @import "@/components/DeSy/Input/mixin.css";
 
-.desy-phone-input {
-  @mixin desy-input-base .desy-phone-input;
+$self: .desy-phone-input;
+
+$(self) {
+  @mixin desy-input-base $(self);
 
   &__label {
     @mixin desy-input-label;

@@ -1,4 +1,4 @@
-@define-mixin desy-input-base {
+@define-mixin desy-input-base $classname {
   width: 100%;
   color: var(--color-structure-50);
   background-color: var(--color-neutral-700);
@@ -31,6 +31,11 @@
       -webkit-box-shadow: 0 0 0px 1000px var(--color-neutral-700) inset !important;
       -webkit-text-fill-color: var(--color-structure-50) !important;
     }
+  }
+
+  $(classname)__required {
+    color: var(--color-error-500);
+    margin-left: 4px;
   }
 }
 

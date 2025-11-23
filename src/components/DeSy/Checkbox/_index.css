@@ -3,7 +3,7 @@
 $self: .desy-checkbox;
 
 $(self) {
-  @mixin desy-input-base .desy-checkbox;
+  @mixin desy-input-base $(self);
 
   label {
     display: flex;

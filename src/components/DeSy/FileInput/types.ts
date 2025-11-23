@@ -1,5 +1,5 @@
 export interface Props {
-  modelValue?: string
+  modelValue?: string | File
   id: string
   disabled?: boolean
   accept?: string

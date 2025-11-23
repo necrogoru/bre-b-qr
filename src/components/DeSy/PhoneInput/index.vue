@@ -94,6 +94,12 @@ export default {
       v-if="label"
       :for="id">
       {{ label }}
+
+      <span
+        v-if="required"
+        class="desy-phone-input__required">
+        *
+      </span>
     </label>
 
     <input

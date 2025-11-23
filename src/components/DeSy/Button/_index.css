@@ -41,6 +41,21 @@
     animation: spin 1s linear infinite;
   }
 
+  &--outlined {
+    background-color: transparent;
+    border: 2px solid var(--color-accent-500);
+
+    &:hover {
+      color: var(--text-structure-50);
+      box-shadow: var(--shadow-glow-intense);
+    }
+
+    &:active {
+      background-color: transparent;
+      color: var(--text-structure-50);
+    }
+  }
+
   &--disabled,
   &:disabled {
     cursor: not-allowed;

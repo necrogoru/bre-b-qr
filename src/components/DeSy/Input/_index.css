@@ -3,7 +3,7 @@
 $self: .desy-input;
 
 $(self) {
-  @mixin desy-input-base $self;
+  @mixin desy-input-base $(self);
 
   &__label {
     @mixin desy-input-label;
@@ -21,6 +21,24 @@ $(self) {
       position: relative;
       padding-right: 40px;
     }
+  }
+
+  &__prefix {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-structure-100);
+  }
+
+  &__suffix {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-structure-100);
   }
 
 

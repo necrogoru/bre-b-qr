@@ -4,6 +4,8 @@ import type { Props } from './types'
 
 defineProps<Props>()
 
+const emit = defineEmits(['update:modelValue'])
+
 const handleChange = (event: Event) => {
   const target = event.target as HTMLInputElement
   const files = target.files
@@ -15,6 +17,10 @@ const handleChange = (event: Event) => {
   return null
 }
 
+const onFileChange = (event: Event) => {
+  const file = handleChange(event)
+  emit('update:modelValue', file)
+}
 </script>
 
 <script lang="ts">
@@ -31,7 +37,7 @@ export default {
       {{ label }}
       <span
         v-if="required"
-        class="desy-file-input--required">
+        class="desy-file-input__required">
         *
       </span>
     </label>
@@ -41,7 +47,7 @@ export default {
       type="file"
       class="desy-file-input__input"
       :disabled="disabled"
-      @change="$emit('update:modelValue', handleChange" />
+      @change="handleChange" />
 
     <p
       v-if="helperText"

@@ -4,6 +4,7 @@ import DeSyButton from '@/components/DeSy/Button/index.vue'
 import DeSySelect from '@/components/DeSy/Select/index.vue'
 import DeSyInput from '@/components/DeSy/Input/index.vue'
 import DeSyCheckbox from '@/components/DeSy/Checkbox/index.vue'
+import DeSyFileInput from '@/components/DeSy/FileInput/index.vue'
 import DeSyPhoneInput from '@/components/DeSy/PhoneInput/index.vue'
 import QRGenerator from '@/components/QRGenerator/index.vue'
 
@@ -22,7 +23,7 @@ const email = ref('')
 const code = ref('')
 
 const showLogo = ref(false)
-const logo = ref<File | null>(null)
+const logo = ref<File>()
 
 const currentData = computed(() => {
   const dataMap: Record<string, string> = {
@@ -65,19 +66,19 @@ export default {
         </p>
 
         <form
-          class="mt-16 flex flex-col gap-8"
+          class="mt-20 flex flex-col gap-16"
           @submit.prevent="generateQR">
           <DeSySelect
             id="key-type"
             v-model="keyType"
             label="Tipo de llave"
+            required
             :options />
-
-          <div class="p-2 mt-4 w-120" />
 
           <DeSyInput
             v-if="keyType === 'code'"
             id="code"
+            required
             v-model="code"
             label="Código"
             prefix="@"
@@ -86,12 +87,14 @@ export default {
           <DeSyPhoneInput
             v-if="keyType === 'phone'"
             id="phone"
+            required
             v-model="phone"
             label="Número de teléfono" />
 
           <DeSyInput
             v-if="keyType === 'email'"
             id="email"
+            required
             v-model="email"
             label="Correo electrónico"
             placeholder="correo@ejemplo.com"
@@ -100,19 +103,15 @@ export default {
           <DeSyInput
             v-if="keyType === 'identification'"
             id="identification"
+            required
             v-model="identification"
             placeholder="1234567890"
             label="Número de identificación"
             type="number" />
 
-          <DeSyCheckbox
-            id="show-logo"
-            v-model="showLogo"
-            label="Añadir logo al QR"
-          />
-
           <DeSyFileInput
             id="logo"
+            label="Logo"
             v-model="logo"/>
 
           <DeSyButton type="submit">

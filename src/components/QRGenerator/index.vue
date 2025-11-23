@@ -88,17 +88,19 @@ export default {
 
     <figure id="qr" />
 
-    <div class="flex gap-12">
+    <div class="flex justify-center gap-12">
       <DeSyButton
+        outlined
         type="button"
         @click="handleDownload">
-        Descargar QR
+        Descargar
       </DeSyButton>
 
       <DeSyButton
+        outlined
         type="button"
         @click="handlePrint">
-        Imprimir QR
+        Imprimir
       </DeSyButton>
     </div>
   </div>
