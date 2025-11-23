@@ -20,6 +20,7 @@
     "intl-tel-input": "^25.12.5",
     "qr-code-styling": "^1.9.2",
     "tailwindcss": "^4.1.13",
+    "uuid": "^13.0.0",
     "vue": "^3.5.22"
   },
   "devDependencies": {

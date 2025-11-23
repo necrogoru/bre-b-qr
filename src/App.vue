@@ -7,7 +7,9 @@ import DeSyInput from '@/components/DeSy/Input/index.vue'
 import DeSyCheckbox from '@/components/DeSy/Checkbox/index.vue'
 import DeSyFileInput from '@/components/DeSy/FileInput/index.vue'
 import DeSyPhoneInput from '@/components/DeSy/PhoneInput/index.vue'
+import DeSyToasts from '@/components/DeSy/Toasts/index.vue'
 import QRGenerator from '@/components/QRGenerator/index.vue'
+import toastState from '@/components/DeSy/Toasts/state'
 
 const keyType = ref('phone')
 
@@ -46,7 +48,7 @@ const currentData = computed(() => {
 const qrComponent = ref<InstanceType<typeof QRGenerator> | null>(null)
 function generateQR() {
   if(!currentData.value) {
-    alert('Por favor, ingresa un valor válido para generar el QR.')
+    toastState.addToast('Por favor, ingresa un valor válido para generar el QR.', 'error')
     return
   }
 
@@ -154,5 +156,7 @@ export default {
         &copy; 2025 necrogoru. Todos los derechos reservados.
       </p>
     </footer>
+
+    <DeSyToasts />
   </div>
 </template>

@@ -4,6 +4,7 @@ import QRCodeStyling, { type Options } from 'qr-code-styling'
 import { Icon } from '@iconify/vue'
 import DeSyButton from '@/components/DeSy/Button/index.vue'
 import { ref, computed } from 'vue'
+import toastState from '@/components/DeSy/Toasts/state'
 import type { Props } from './types'
 
 const props = defineProps<Props>()
@@ -38,7 +39,7 @@ async function generateQR() {
 
 function validData() {
   if (!props.data) {
-    alert('Por favor, ingresa un valor válido para generar el QR.');
+    toastState.addToast('Por favor, ingresa un valor válido para generar el QR.', 'error');
     return false;
   }
 
@@ -91,7 +92,7 @@ function handleShare() {
       }).catch((error) => console.error('Error al compartir:', error));
     });
   } else {
-    alert('La función de compartir no está soportada en este navegador.');
+    toastState.addToast('La función de compartir no está soportada en este navegador.', 'error');
   }
 }
 
