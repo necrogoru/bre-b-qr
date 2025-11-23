@@ -22,6 +22,10 @@ const identification = ref('')
 const email = ref('')
 const code = ref('')
 
+function setPhone(newPhone: string) {
+  phone.value = newPhone.replaceAll(' ', '')
+}
+
 const showLogo = ref(false)
 const logo = ref<File>()
 
@@ -30,7 +34,7 @@ const currentData = computed(() => {
     phone: phone.value,
     identification: identification.value,
     email: email.value,
-    code: code.value
+    code: `@${code.value}`
   }
 
   return dataMap[keyType.value] || ''
@@ -88,8 +92,8 @@ export default {
             v-if="keyType === 'phone'"
             id="phone"
             required
-            v-model="phone"
-            label="Número de teléfono" />
+            label="Número de teléfono"
+            @update:national-number="setPhone" />
 
           <DeSyInput
             v-if="keyType === 'email'"

@@ -1,35 +1,38 @@
 <script lang="ts" setup>
 import './_index.css'
-import QRCodeStyling from 'qr-code-styling'
+import QRCodeStyling, { type Options } from 'qr-code-styling'
 import DeSyButton from '@/components/DeSy/Button/index.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { Props } from './types'
 
 const props = defineProps<Props>()
 
 const qrCode = ref<QRCodeStyling>()
-function generateQR() {
-  qrCode.value = new QRCodeStyling({
-    width: 1024,
-    height: 1024,
-    type: "svg",
-    data: props.data,
-    image: props.image ? URL.createObjectURL(props.image) : undefined,
-    dotsOptions: {
-      color: "#000000"
-    },
-    backgroundOptions: {
-      color: "#fefefe",
-    },
-    imageOptions: {
-      crossOrigin: "anonymous",
-      margin: 20
-    }
-  });
+const qrOptions = computed<Options>(() => ({
+  width: 1024,
+  height: 1024,
+  type: "svg",
+  data: props.data,
+  image: props.image ? URL.createObjectURL(props.image) : undefined,
+  dotsOptions: {
+    color: "#000000"
+  },
+  backgroundOptions: {
+    color: "#fefefe",
+  },
+  imageOptions: {
+    crossOrigin: "anonymous",
+    margin: 20
+  }
+}))
 
-  const qrElement = document.getElementById('qr');
+const qrSvg = ref<string>('')
+async function generateQR() {
+  if (!qrCode.value) qrCode.value = new QRCodeStyling(qrOptions.value);
+  else qrCode.value.update(qrOptions.value);
 
-  qrCode.value.append(qrElement!);
+  const rawData = await qrCode.value.getRawData('svg');
+  qrSvg.value = URL.createObjectURL(rawData);
 }
 
 function validData() {
@@ -87,7 +90,11 @@ export default {
     </h2>
 
     <div v-if="data">
-      <figure id="qr" />
+      <figure>
+        <img
+          :src="qrSvg"
+          alt="">
+      </figure>
 
       <div class="flex justify-center gap-12">
         <DeSyButton
