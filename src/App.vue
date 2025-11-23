@@ -29,7 +29,7 @@ function generateQR() {
     document.getElementById('qr') as HTMLCanvasElement,
     'BREB:' + (keyType.value === 'phone' ? phone.value : keyType.value === 'code' ? '@' + code.value : ''),
     {
-      width: 300,
+      version: 2,
       margin: 2,
       color: {
         dark: '#000000',
@@ -47,71 +47,81 @@ export default {
 </script>
 
 <template>
-  <div class="p-20">
-    <h1>
-      QR BRE-B
-    </h1>
+  <div class="w-full md:max-w-[80vw] mx-auto p-20">
+    <header>
+      <h1>
+        QR BRE-B
+      </h1>
+    </header>
 
-    <p class="mt-12">
-      Crea un QR para tu llave BRE-B
-    </p>
+    <main class="flex flex-col md:flex-row">
+      <section class="w-full md:max-w-420">
+        <p class="mt-12">
+          Crea un QR para tu llave BRE-B
+        </p>
 
-    <form
-      class="mt-16 flex flex-col gap-8"
-      @submit.prevent="generateQR">
-      <DeSySelect
-        id="key-type"
-        v-model="keyType"
-        label="Tipo de llave"
-        :options />
+        <form
+          class="mt-16 flex flex-col gap-8"
+          @submit.prevent="generateQR">
+          <DeSySelect
+            id="key-type"
+            v-model="keyType"
+            label="Tipo de llave"
+            :options />
 
-      <div class="p-2 mt-4 w-120" />
+          <div class="p-2 mt-4 w-120" />
 
-      <DeSyInput
-        v-if="keyType === 'code'"
-        id="code"
-        v-model="code"
-        label="Código"
-        prefix="@"
-      />
+          <DeSyInput
+            v-if="keyType === 'code'"
+            id="code"
+            v-model="code"
+            label="Código"
+            prefix="@"
+          />
 
-      <DeSyPhoneInput
-        v-if="keyType === 'phone'"
-        id="phone"
-        v-model="phone"
-        label="Número de teléfono" />
+          <DeSyPhoneInput
+            v-if="keyType === 'phone'"
+            id="phone"
+            v-model="phone"
+            label="Número de teléfono" />
 
-      <DeSyInput
-        v-if="keyType === 'email'"
-        id="email"
-        v-model="email"
-        label="Correo electrónico"
-        placeholder="correo@ejemplo.com"
-        type="email" />
+          <DeSyInput
+            v-if="keyType === 'email'"
+            id="email"
+            v-model="email"
+            label="Correo electrónico"
+            placeholder="correo@ejemplo.com"
+            type="email" />
 
-      <DeSyInput
-        v-if="keyType === 'cc'"
-        id="cc"
-        v-model="identification"
-        placeholder="1234567890"
-        label="Número de identificación"
-        type="number" />
+          <DeSyInput
+            v-if="keyType === 'cc'"
+            id="cc"
+            v-model="identification"
+            placeholder="1234567890"
+            label="Número de identificación"
+            type="number" />
 
-      <DeSyCheckbox
-        id="show-logo"
-        v-model="showLogo"
-        label="Añadir logo al QR"
-      />
+          <DeSyCheckbox
+            id="show-logo"
+            v-model="showLogo"
+            label="Añadir logo al QR"
+          />
 
-      <input type="file">
+          <input type="file">
 
-      <DeSyButton type="submit">
-        Generar QR
-      </DeSyButton>
-    </form>
+          <DeSyButton type="submit">
+            Generar QR
+          </DeSyButton>
+        </form>
+      </section>
 
-    <div>
-      <canvas id="qr"></canvas>
-    </div>
+      <div class="">
+        <figure>
+          <canvas
+            id="qr"
+            class="w-full max-w-100" />
+        </figure>
+      </div>
+    </main>
   </div>
 </template>
