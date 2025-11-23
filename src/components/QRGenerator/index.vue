@@ -86,22 +86,28 @@ export default {
       Código QR
     </h2>
 
-    <figure id="qr" />
+    <div v-if="data">
+      <figure id="qr" />
 
-    <div class="flex justify-center gap-12">
-      <DeSyButton
-        outlined
-        type="button"
-        @click="handleDownload">
-        Descargar
-      </DeSyButton>
+      <div class="flex justify-center gap-12">
+        <DeSyButton
+          outlined
+          type="button"
+          @click="handleDownload">
+          Descargar
+        </DeSyButton>
 
-      <DeSyButton
-        outlined
-        type="button"
-        @click="handlePrint">
-        Imprimir
-      </DeSyButton>
+        <DeSyButton
+          outlined
+          type="button"
+          @click="handlePrint">
+          Imprimir
+        </DeSyButton>
+      </div>
     </div>
+
+    <p v-else>
+      Ingresa un valor válido para generar el código QR.
+    </p>
   </div>
 </template>
