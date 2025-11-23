@@ -53,8 +53,8 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col w-full md:max-w-[80vw] mx-auto p-20">
-    <main class="flex-auto flex flex-col md:flex-row gap-20">
+  <div class="min-h-screen flex flex-col w-full md:max-w-[80vw] mx-auto p-20">
+    <main class="flex-1 flex flex-col md:flex-row gap-20">
       <section class="flex-none w-full md:max-w-420">
         <h1>
           QR BRE-B

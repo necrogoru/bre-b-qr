@@ -1,11 +1,22 @@
 $self: .qr-generator;
 
 $(self) {
+  border-radius: var(--radius-4xl);
+  background-color: var(--color-neutral-500);
+  padding: 20px;
+
+  h2 {
+    text-align: center;
+  }
+
   figure {
     padding: 40px;
+    display: flex;
+    justify-content: center;
 
     svg {
       width: 100%;
+      max-width: 300px;
       height: auto;
     }
   }

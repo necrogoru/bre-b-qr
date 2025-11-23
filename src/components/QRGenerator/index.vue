@@ -44,6 +44,10 @@ export default {
 
 <template>
   <div class="qr-generator">
+    <h2>
+      Código QR
+    </h2>
+
     <figure id="qr" />
   </div>
 </template>
