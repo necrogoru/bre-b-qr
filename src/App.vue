@@ -18,6 +18,8 @@ const options = [
   { label: 'Código', value: 'code' }
 ]
 
+// realPhone is used to store the full number and restore it if the select changes
+const realPhone = ref('')
 const phone = ref('')
 const identification = ref('')
 const email = ref('')
@@ -93,7 +95,7 @@ export default {
             :options />
 
           <DeSyInput
-            v-show="keyType === 'code'"
+            v-if="keyType === 'code'"
             id="code"
             required
             v-model="code"
@@ -102,14 +104,15 @@ export default {
           />
 
           <DeSyPhoneInput
-            v-show="keyType === 'phone'"
+            v-if="keyType === 'phone'"
             id="phone"
             required
             label="Número de teléfono"
+            v-model="realPhone"
             @update:national-number="setPhone" />
 
           <DeSyInput
-            v-show="keyType === 'email'"
+            v-if="keyType === 'email'"
             id="email"
             required
             v-model="email"
@@ -118,7 +121,7 @@ export default {
             type="email" />
 
           <DeSyInput
-            v-show="keyType === 'identification'"
+            v-if="keyType === 'identification'"
             id="identification"
             required
             v-model="identification"
