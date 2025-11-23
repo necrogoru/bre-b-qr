@@ -31,7 +31,6 @@
       -webkit-box-shadow: 0 0 0px 1000px var(--color-neutral-700) inset !important;
       -webkit-text-fill-color: var(--color-structure-50) !important;
     }
-    appearance: none;
   }
 }
 
