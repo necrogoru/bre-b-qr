@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import QRCode from 'qrcode'
 import DeSyButton from '@/components/DeSy/Button/index.vue'
 import DeSySelect from '@/components/DeSy/Select/index.vue'
 import DeSyInput from '@/components/DeSy/Input/index.vue'
@@ -15,14 +16,27 @@ const options = [
   { label: 'Código', value: 'code' }
 ]
 
-const code = ref('')
 
 const showLogo = ref(false)
 
 const phone = ref('')
+const identification = ref('')
+const email = ref('')
+const code = ref('')
 
 function generateQR() {
-  console.log('Generating QR for', keyType.value, code.value)
+  QRCode.toCanvas(
+    document.getElementById('qr') as HTMLCanvasElement,
+    'BREB:' + (keyType.value === 'phone' ? phone.value : keyType.value === 'code' ? '@' + code.value : ''),
+    {
+      width: 300,
+      margin: 2,
+      color: {
+        dark: '#000000',
+        light: '#FFFFFF'
+      }
+    }
+  )
 }
 </script>
 
@@ -64,19 +78,21 @@ export default {
       <DeSyPhoneInput
         v-if="keyType === 'phone'"
         id="phone"
-        label="Número de teléfono"
-        v-model="phone" />
+        v-model="phone"
+        label="Número de teléfono" />
 
       <DeSyInput
         v-if="keyType === 'email'"
         id="email"
+        v-model="email"
         label="Correo electrónico"
         placeholder="correo@ejemplo.com"
         type="email" />
 
       <DeSyInput
-        id="cc"
         v-if="keyType === 'cc'"
+        id="cc"
+        v-model="identification"
         placeholder="1234567890"
         label="Número de identificación"
         type="number" />
