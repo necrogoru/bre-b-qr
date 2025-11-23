@@ -116,6 +116,7 @@ export default {
           <DeSyFileInput
             id="logo"
             label="Logo"
+            accept="image/*"
             v-model="logo"/>
 
           <DeSyButton type="submit">
