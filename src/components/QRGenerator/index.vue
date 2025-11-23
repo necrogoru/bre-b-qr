@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import './_index.css'
 import QRCodeStyling from 'qr-code-styling'
+import DeSyButton from '@/components/DeSy/Button/index.vue'
 import { ref } from 'vue'
 import type { Props } from './types'
 
@@ -31,6 +32,43 @@ function generateQR() {
   qrCode.value.append(qrElement!);
 }
 
+function validData() {
+  if (!props.data) {
+    alert('Por favor, ingresa un valor válido para generar el QR.');
+    return false;
+  }
+
+  return true
+}
+
+function handleDownload() {
+  if (!validData()) return;
+
+  qrCode.value?.download({ extension: 'png' });
+}
+
+function handlePrint() {
+  if (!validData()) return;
+
+  const printWindow = window.open('', '_blank', 'width=600,height=600');
+  if (printWindow && qrCode.value) {
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Imprimir Código QR</title>
+        </head>
+        <body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+          ${qrCode.value?._domCanvas?.outerHTML}
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    printWindow.close();
+  }
+}
+
 defineExpose({
   generateQR
 })
@@ -49,5 +87,19 @@ export default {
     </h2>
 
     <figure id="qr" />
+
+    <div class="flex gap-12">
+      <DeSyButton
+        type="button"
+        @click="handleDownload">
+        Descargar QR
+      </DeSyButton>
+
+      <DeSyButton
+        type="button"
+        @click="handlePrint">
+        Imprimir QR
+      </DeSyButton>
+    </div>
   </div>
 </template>
