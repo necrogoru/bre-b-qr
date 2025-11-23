@@ -7,15 +7,14 @@ import DeSyInput from '@/components/DeSy/Input/index.vue'
 import DeSyCheckbox from '@/components/DeSy/Checkbox/index.vue'
 import DeSyPhoneInput from '@/components/DeSy/PhoneInput/index.vue'
 
-const keyType = ref(undefined)
+const keyType = ref('phone')
 
 const options = [
   { label: 'Teléfono', value: 'phone' },
-  { label: 'Identificación', value: 'cc' },
+  { label: 'Identificación', value: 'identification' },
   { label: 'Correo electrónico', value: 'email' },
   { label: 'Código', value: 'code' }
 ]
-
 
 const showLogo = ref(false)
 
@@ -94,8 +93,8 @@ export default {
             type="email" />
 
           <DeSyInput
-            v-if="keyType === 'cc'"
-            id="cc"
+            v-if="keyType === 'identification'"
+            id="identification"
             v-model="identification"
             placeholder="1234567890"
             label="Número de identificación"

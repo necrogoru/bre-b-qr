@@ -16,7 +16,6 @@ const emit = defineEmits<{
   change: [value: string | number | (string | number)[]]
 }>()
 
-const selectRef = ref<HTMLSelectElement | null>(null)
 const selectedValues = ref<(string | number)[]>(
   props.multiple && props.modelValue
     ? Array.isArray(props.modelValue)
@@ -64,6 +63,20 @@ const isSelected = (value: string | number) => {
   }
   return props.modelValue === value
 }
+
+const control = ref<HTMLSelectElement | null>(null)
+const openSelectDropdown = () => {
+  if (!control.value) return
+
+  control.value.focus()
+  if (control.value && 'showPicker' in HTMLSelectElement.prototype) {
+    try {
+      control.value.showPicker()
+    } catch (error) {
+      // Ignore errors
+    }
+  }
+}
 </script>
 
 <script lang="ts">
@@ -78,7 +91,8 @@ export default {
     :class="{
       'desy-select--disabled': disabled,
       'desy-select--error': error
-    }">
+    }"
+    @click="openSelectDropdown">
     <label
       v-if="label"
       :for="id"
@@ -86,8 +100,10 @@ export default {
       {{ label }}
     </label>
 
+    <fieldset>
     <select
       :id
+      ref="control"
       :disabled="disabled"
       :multiple="multiple"
       :value="multiple ? undefined : modelValue"
@@ -95,7 +111,8 @@ export default {
       <option
         v-if="!multiple && placeholder"
         value=""
-        disabled selected>
+        disabled
+        selected>
         {{ placeholder }}
       </option>
 
@@ -108,6 +125,7 @@ export default {
         {{ option.label }}
       </option>
     </select>
+    </fieldset>
 
     <span
       v-if="error"

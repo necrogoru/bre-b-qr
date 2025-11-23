@@ -1,0 +1,14 @@
+@import "intl-tel-input/build/css/intlTelInput.css";
+@import "@/components/DeSy/Input/mixin.css";
+
+.desy-phone-input {
+  @mixin desy-input-base .desy-phone-input;
+
+  &__label {
+    @mixin desy-input-label;
+  }
+
+  &__error {
+    @mixin desy-input-error;
+  }
+}

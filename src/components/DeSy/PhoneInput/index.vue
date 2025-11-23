@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import intlTelInput from 'intl-tel-input'
 import type { Iti } from 'intl-tel-input'
+import './_index.css'
 
 import type { Props } from './types'
 
@@ -55,9 +56,9 @@ function onInputChange() {
 
 onMounted(async () => {
   iti.value = intlTelInput(input.value, {
-    initialCountry: 'us',
-    countryOrder: ['us'],
-    autoPlaceholder: 'aggressive',
+    initialCountry: 'co',
+    countryOrder: ['co'],
+    autoPlaceholder: 'polite',
     loadUtils: () => import("intl-tel-input/utils")
   })
 
@@ -78,16 +79,16 @@ onBeforeUnmount(() => {
 
 <script lang="ts">
 export default {
-  name: 'AppPhoneInput'
+  name: 'DeSyPhoneInput'
 }
 </script>
 
 <template>
   <div
-    class="app-phone-input"
+    class="desy-phone-input"
     :class="{
-      'app-phone-input--disabled': disabled,
-      'app-phone-input--error': finalError
+      'desy-phone-input--disabled': disabled,
+      'desy-phone-input--error': finalError
     }">
     <label
       v-if="label"
@@ -111,5 +112,3 @@ export default {
     </p>
   </div>
 </template>
-
-<style src="./_index.css"></style>
