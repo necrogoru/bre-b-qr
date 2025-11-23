@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { Icon } from '@iconify/vue'
 import DeSyButton from '@/components/DeSy/Button/index.vue'
 import DeSySelect from '@/components/DeSy/Select/index.vue'
 import DeSyInput from '@/components/DeSy/Input/index.vue'
@@ -58,14 +59,26 @@ export default {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col w-full md:max-w-[80vw] mx-auto p-20">
-    <main class="flex-1 flex flex-col md:flex-row gap-20">
+  <div class="min-h-screen flex flex-col">
+    <header class="flex justify-end p-16">
+      <a
+        href="https://github.com/necrogoru/bre-b-qr"
+        target="_blank"
+        class="rounded-full border border-structure-50 p-2"
+        rel="noopener noreferrer">
+        <Icon
+          icon="mingcute:github-fill"
+          class="text-24" />
+      </a>
+    </header>
+
+    <main class="w-full md:max-w-[80vw] mx-auto px-20 pb-24 md:px-24 flex-1 flex flex-col md:flex-row gap-32 mt-20">
       <section class="flex-none w-full md:max-w-420">
         <h1>
-          QR BRE-B
+          Generador de QR Bre-b
         </h1>
 
-        <p class="mt-12">
+        <p class="mt-12 text-12">
           Crea un QR para tu llave BRE-B
         </p>
 
@@ -80,7 +93,7 @@ export default {
             :options />
 
           <DeSyInput
-            v-if="keyType === 'code'"
+            v-show="keyType === 'code'"
             id="code"
             required
             v-model="code"
@@ -89,14 +102,14 @@ export default {
           />
 
           <DeSyPhoneInput
-            v-if="keyType === 'phone'"
+            v-show="keyType === 'phone'"
             id="phone"
             required
             label="Número de teléfono"
             @update:national-number="setPhone" />
 
           <DeSyInput
-            v-if="keyType === 'email'"
+            v-show="keyType === 'email'"
             id="email"
             required
             v-model="email"
@@ -105,7 +118,7 @@ export default {
             type="email" />
 
           <DeSyInput
-            v-if="keyType === 'identification'"
+            v-show="keyType === 'identification'"
             id="identification"
             required
             v-model="identification"
@@ -134,8 +147,8 @@ export default {
     </main>
 
     <footer>
-      <p class="mt-20 text-center text-sm text-gray-500">
-        &copy; 2024 BRE-B. Todos los derechos reservados.
+      <p class="mt-20 pb-12 text-center text-sm text-gray-500 text-14">
+        &copy; 2025 necrogoru. Todos los derechos reservados.
       </p>
     </footer>
   </div>

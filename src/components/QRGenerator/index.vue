@@ -112,7 +112,7 @@ export default {
       Código QR
     </h2>
 
-    <div v-if="data">
+    <div v-if="qrSvg">
       <figure>
         <img
           :src="qrSvg"
@@ -124,21 +124,21 @@ export default {
           outlined
           type="button"
           @click="handleDownload">
-          <Icon icon="ic:baseline-download" />
+          <Icon icon="mingcute:arrow-to-down-line" />
         </DeSyButton>
 
         <DeSyButton
           outlined
           type="button"
           @click="handleShare">
-          <Icon icon="ic:baseline-share" />
+          <Icon icon="mingcute:share-2-line" />
         </DeSyButton>
 
         <DeSyButton
           outlined
           type="button"
           @click="handlePrint">
-          <Icon icon="ic:baseline-print" />
+          <Icon icon="mingcute:print-line" />
         </DeSyButton>
       </div>
     </div>

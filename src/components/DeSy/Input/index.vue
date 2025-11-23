@@ -69,6 +69,7 @@ const handleBlur = (event: FocusEvent) => {
       <input
         :id
         :type="type"
+        :name="id"
         :value="modelValue"
         :placeholder="placeholder"
         :disabled="disabled"

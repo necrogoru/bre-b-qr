@@ -59,7 +59,7 @@ export default {
       <span>
         <Icon
           v-if="!loadedFile || (loadedFile && !loadedFile.type.includes('image'))"
-          icon="ic:baseline-upload-file" />
+          icon="mingcute:file-upload-line" />
 
         <img
         v-else

@@ -62,7 +62,7 @@ export default {
       :for="id"
       tabindex="0">
       <span>
-        <Icon icon="ic:check" />
+        <Icon icon="mingcute:check-line" />
       </span>
 
       <input

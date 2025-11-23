@@ -92,7 +92,8 @@ export default {
     }">
     <label
       v-if="label"
-      :for="id">
+      :for="id"
+      class="desy-phone-input__label">
       {{ label }}
 
       <span
