@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
 import type { Props } from './types'
 
 const props = withDefaults(defineProps<Props>(), {
-  placeholder: 'Select an option',
+  placeholder: 'Selecciona una opción',
   disabled: false,
   searchable: false,
   clearable: false,
@@ -86,30 +86,28 @@ export default {
       {{ label }}
     </label>
 
-    <div class="desy-select__wrapper">
-      <select
-        :id
-        :disabled="disabled"
-        :multiple="multiple"
-        :value="multiple ? undefined : modelValue"
-        @change="handleChange">
-        <option
-          v-if="!multiple && placeholder"
-          value=""
-          disabled selected>
-          {{ placeholder }}
-        </option>
+    <select
+      :id
+      :disabled="disabled"
+      :multiple="multiple"
+      :value="multiple ? undefined : modelValue"
+      @change="handleChange">
+      <option
+        v-if="!multiple && placeholder"
+        value=""
+        disabled selected>
+        {{ placeholder }}
+      </option>
 
-        <option
-          v-for="option in options"
-          :key="option.value"
-          :value="option.value"
-          :disabled="option.disabled"
-          :selected="isSelected(option.value)">
-          {{ option.label }}
-        </option>
-      </select>
-    </div>
+      <option
+        v-for="option in options"
+        :key="option.value"
+        :value="option.value"
+        :disabled="option.disabled"
+        :selected="isSelected(option.value)">
+        {{ option.label }}
+      </option>
+    </select>
 
     <span
       v-if="error"
