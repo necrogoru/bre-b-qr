@@ -40,7 +40,12 @@ const handleBlur = (event: FocusEvent) => {
 </script>
 
 <template>
-  <div class="desy-input">
+  <div
+    class="desy-input"
+    :class="{
+      'desy-input--prefix': prefix,
+      'desy-input--suffix': suffix
+    }">
     <label
       v-if="label"
       :for="id"

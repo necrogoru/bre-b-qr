@@ -9,6 +9,21 @@ $(self) {
     @mixin desy-input-label;
   }
 
+  &--prefix {
+    $(self)__container {
+      position: relative;
+      padding-left: 40px;
+    }
+  }
+
+  &--suffix {
+    $(self)__container {
+      position: relative;
+      padding-right: 40px;
+    }
+  }
+
+
   &__error {
     @mixin desy-input-error;
   }

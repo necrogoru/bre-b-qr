@@ -1,0 +1,15 @@
+@import "@/components/DeSy/Input/mixin.css";
+
+$self: .desy-file-input;
+
+#{$self} {
+  @mixin desy-input-base $self;
+
+  &__label {
+    @mixin desy-input-label;
+  }
+
+  &__error {
+    @mixin desy-input-error;
+  }
+}

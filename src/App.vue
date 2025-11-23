@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import QRCode from 'qrcode'
+import { computed, ref } from 'vue'
 import DeSyButton from '@/components/DeSy/Button/index.vue'
 import DeSySelect from '@/components/DeSy/Select/index.vue'
 import DeSyInput from '@/components/DeSy/Input/index.vue'
 import DeSyCheckbox from '@/components/DeSy/Checkbox/index.vue'
 import DeSyPhoneInput from '@/components/DeSy/PhoneInput/index.vue'
+import QRGenerator from '@/components/QRGenerator/index.vue'
 
 const keyType = ref('phone')
 
@@ -16,26 +16,33 @@ const options = [
   { label: 'Código', value: 'code' }
 ]
 
-const showLogo = ref(false)
-
 const phone = ref('')
 const identification = ref('')
 const email = ref('')
 const code = ref('')
 
+const showLogo = ref(false)
+const logo = ref<File | null>(null)
+
+const currentData = computed(() => {
+  const dataMap: Record<string, string> = {
+    phone: phone.value,
+    identification: identification.value,
+    email: email.value,
+    code: code.value
+  }
+
+  return dataMap[keyType.value] || ''
+})
+
+const qrComponent = ref<InstanceType<typeof QRGenerator> | null>(null)
 function generateQR() {
-  QRCode.toCanvas(
-    document.getElementById('qr') as HTMLCanvasElement,
-    'BREB:' + (keyType.value === 'phone' ? phone.value : keyType.value === 'code' ? '@' + code.value : ''),
-    {
-      version: 2,
-      margin: 2,
-      color: {
-        dark: '#000000',
-        light: '#FFFFFF'
-      }
-    }
-  )
+  if(!currentData.value) {
+    alert('Por favor, ingresa un valor válido para generar el QR.')
+    return
+  }
+
+  qrComponent.value?.generateQR()
 }
 </script>
 
@@ -46,15 +53,13 @@ export default {
 </script>
 
 <template>
-  <div class="w-full md:max-w-[80vw] mx-auto p-20">
-    <header>
-      <h1>
-        QR BRE-B
-      </h1>
-    </header>
+  <div class="flex flex-col w-full md:max-w-[80vw] mx-auto p-20">
+    <main class="flex-auto flex flex-col md:flex-row gap-20">
+      <section class="flex-none w-full md:max-w-420">
+        <h1>
+          QR BRE-B
+        </h1>
 
-    <main class="flex flex-col md:flex-row">
-      <section class="w-full md:max-w-420">
         <p class="mt-12">
           Crea un QR para tu llave BRE-B
         </p>
@@ -106,7 +111,9 @@ export default {
             label="Añadir logo al QR"
           />
 
-          <input type="file">
+          <DeSyFileInput
+            id="logo"
+            v-model="logo"/>
 
           <DeSyButton type="submit">
             Generar QR
@@ -114,13 +121,18 @@ export default {
         </form>
       </section>
 
-      <div class="">
-        <figure>
-          <canvas
-            id="qr"
-            class="w-full max-w-100" />
-        </figure>
+      <div class="flex-1">
+        <QRGenerator
+          ref="qrComponent"
+          :data="currentData"
+          :image="logo" />
       </div>
     </main>
+
+    <footer>
+      <p class="mt-20 text-center text-sm text-gray-500">
+        &copy; 2024 BRE-B. Todos los derechos reservados.
+      </p>
+    </footer>
   </div>
 </template>

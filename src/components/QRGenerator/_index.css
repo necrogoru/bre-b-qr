@@ -1,0 +1,12 @@
+$self: .qr-generator;
+
+$(self) {
+  figure {
+    padding: 40px;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
