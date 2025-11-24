@@ -14,3 +14,19 @@ $(self) {
     @mixin desy-input-error;
   }
 }
+
+.iti{
+  &__dropdown-content {
+    background-color: var(--color-neutral-700);
+    color: var(--color-structure-50);
+  }
+
+  &__search-input {
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    &:focus-visible {
+      outline: 1px solid var(--color-accent-300);
+    }
+  }
+}
