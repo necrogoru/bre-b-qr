@@ -76,8 +76,8 @@ export default {
       </a>
     </header>
 
-    <main class="w-full md:max-w-[80vw] mx-auto px-20 pb-24 md:px-24 flex-1 flex flex-col md:flex-row gap-32 mt-20">
-      <section class="flex-none w-full md:max-w-420">
+    <main class="w-full md:max-w-[80vw] mx-auto px-20 pb-24 md:px-24 flex-1 grid md:grid-cols-3 gap-32 mt-20">
+      <section>
         <h1>
           Generador de QR Bre-b
         </h1>
@@ -143,12 +143,11 @@ export default {
         </form>
       </section>
 
-      <div class="flex-1">
-        <QRGenerator
-          ref="qrComponent"
-          :data="currentData"
-          :image="logo" />
-      </div>
+      <QRGenerator
+        ref="qrComponent"
+        class="md:col-span-2"
+        :data="currentData"
+        :image="logo" />
     </main>
 
     <footer>

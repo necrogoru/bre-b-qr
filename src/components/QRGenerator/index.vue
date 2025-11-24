@@ -108,7 +108,7 @@ export default {
 </script>
 
 <template>
-  <div class="qr-generator">
+  <div class="qr-generator flex flex-col gap-16">
     <h2>
       Código QR
     </h2>
@@ -144,8 +144,31 @@ export default {
       </div>
     </div>
 
-    <p v-else>
-      Ingresa un valor válido para generar el código QR.
-    </p>
+    <div
+      v-else
+      class="flex flex-col items-center text-14 gap-8">
+      <figure>
+        <img
+          src="/qrBreBLogo.png"
+          class="drop-shadow-lg drop-shadow-accent-500"
+          alt="QR BRE-B Logo">
+      </figure>
+
+      <ol class="list-decimal list-inside space-y-8 text-center marker:font-bold">
+        <li>
+          Selecciona tu tipo de llave.
+        </li>
+        <li>
+          Ingresa el valor asociado a tu llave BRE-B.
+        </li>
+        <li>
+          Haz clic en "Generar Código QR" para crear tu código QR.
+        </li>
+      </ol>
+
+      <p class="text-center mt-12">
+        <b>¡Y listo!</b> Tu código QR aparecerá aquí, listo para descargar, compartir o imprimir.
+      </p>
+    </div>
   </div>
 </template>

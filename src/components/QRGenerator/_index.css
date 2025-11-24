@@ -14,9 +14,9 @@ $(self) {
     display: flex;
     justify-content: center;
 
-    svg {
+    img {
       width: 100%;
-      max-width: 300px;
+      max-width: 240px;
       height: auto;
     }
   }
